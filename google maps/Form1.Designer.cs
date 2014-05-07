@@ -36,6 +36,7 @@
             this.lblStreet = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.lblTrackBar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
@@ -49,6 +50,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -72,7 +74,6 @@
             this.pictureBox2.Size = new System.Drawing.Size(443, 398);
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // lblStatic
             // 
@@ -83,7 +84,6 @@
             this.lblStatic.Size = new System.Drawing.Size(77, 12);
             this.lblStatic.TabIndex = 4;
             this.lblStatic.Text = "Static Map ";
-            this.lblStatic.Click += new System.EventHandler(this.LblStatic_Click);
             // 
             // lblStreet
             // 
@@ -109,12 +109,23 @@
             this.trackBar2.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar2.Size = new System.Drawing.Size(45, 379);
             this.trackBar2.TabIndex = 8;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            // 
+            // lblTrackBar
+            // 
+            this.lblTrackBar.AutoSize = true;
+            this.lblTrackBar.Location = new System.Drawing.Point(14, 406);
+            this.lblTrackBar.Name = "lblTrackBar";
+            this.lblTrackBar.Size = new System.Drawing.Size(13, 13);
+            this.lblTrackBar.TabIndex = 9;
+            this.lblTrackBar.Text = "0";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 590);
+            this.Controls.Add(this.lblTrackBar);
             this.Controls.Add(this.trackBar2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.lblStreet);
@@ -143,6 +154,7 @@
         private System.Windows.Forms.Label lblStreet;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.Label lblTrackBar;
     }
 }
 

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+
 
 namespace google_maps
 {
@@ -16,14 +18,22 @@ namespace google_maps
         {
             InitializeComponent();
         }
+        string streetadd, cityname;
 
-        private void LblStatic_Click(object sender, EventArgs e)
+        private void trackBar2_Scroll(object sender, EventArgs e)
         {
 
+            lblTrackBar.Text = "" + trackBar2.Value;
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            streetadd = textBox1.Text;
+            cityname = textBox2.Text;
+            WebRequest requestPic = WebRequest.Create("http://maps.googleapis.com/maps/api/staticmap?center=" + streetadd + "'" + cityname + "&zoom=11&size=443x398&sensor=false");
+            WebResponse responsePic = requestPic.GetResponse();
+            Image map = Image.FromStream(responsePic.GetResponseStream());
+            pictureBox1.Image = map;
 
         }
     }
