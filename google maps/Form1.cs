@@ -19,22 +19,39 @@ namespace google_maps
             InitializeComponent();
         }
         string streetadd, cityname;
+        int zoom = 13;
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
 
-            lblTrackBar.Text = "" + trackBar2.Value;
+            zoom = trackBar2.Value;
+            streetadd = textBox1.Text;
+            cityname = textBox2.Text;
+            streetadd = textBox1.Text;
+            cityname = textBox2.Text;
+            WebRequest requestPic = WebRequest.Create("http://maps.googleapis.com/maps/api/staticmap?center=" + streetadd + "," + cityname + "&zoom=" + zoom + "&size=443x398&sensor=false");
+            WebResponse responsePic = requestPic.GetResponse();
+            Image map = Image.FromStream(responsePic.GetResponseStream());
+            pictureBox1.Image = map;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             streetadd = textBox1.Text;
             cityname = textBox2.Text;
-            WebRequest requestPic = WebRequest.Create("http://maps.googleapis.com/maps/api/staticmap?center=" + streetadd + "'" + cityname + "&zoom=11&size=443x398&sensor=false");
+            WebRequest requestPic = WebRequest.Create("http://maps.googleapis.com/maps/api/staticmap?center=" + streetadd + "," + cityname + "&zoom=11&size=443x398&sensor=false");
             WebResponse responsePic = requestPic.GetResponse();
             Image map = Image.FromStream(responsePic.GetResponseStream());
             pictureBox1.Image = map;
 
+            requestPic = WebRequest.Create("http://maps.googleapis.com/maps/api/streetview?size=443x398&location=" + streetadd + ","+ cityname + "&heading=235&sensor=false");
+            responsePic = requestPic.GetResponse();
+            Image smap = Image.FromStream(responsePic.GetResponseStream());
+            pictureBox2.Image = smap;
+
         }
+        
+
     }
 }
